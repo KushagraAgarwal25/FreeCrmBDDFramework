@@ -1,5 +1,6 @@
 //package stepDefinitions;
 //
+//import java.util.List;
 //import java.util.concurrent.TimeUnit;
 //
 //import org.junit.Assert;
@@ -7,13 +8,15 @@
 //import org.openqa.selenium.WebDriver;
 //import org.openqa.selenium.chrome.ChromeDriver;
 //
+////import io.cucumber.core.gherkin.vintage.internal.gherkin.ast.DataTable;
+////import io.cucumber.core.internal.gherkin.ast.DataTable;
+//import io.cucumber.datatable.DataTable;
 //import io.cucumber.java.en.Given;
 //import io.cucumber.java.en.Then;
 //import io.cucumber.java.en.When;
 //
-//
-//public class LoginStepDefinition {
-//
+//public class DealStepDefinition {
+//	
 //	WebDriver driver;
 //
 //	@Given("^User is already on login page$")
@@ -31,7 +34,7 @@
 //		driver.get("https://ui.freecrm.com/");
 //
 //	}
-//
+//	
 //	@When("^Title of login page is Cogmento CRM$")
 //	public void title_of_login_page_is_Cogmento_CRM() {
 //
@@ -39,18 +42,14 @@
 //		System.out.println(title);
 //		Assert.assertEquals("Cogmento CRM", title);
 //	}
-//
-//	//Regular Expression:
-//	//1. \"([^\"]*)\"
-//	//2. \"(.*)\"
 //	
-//	@Then("^user enters \"(.*)\" and \"(.*)\"$")
-//	public void user_enters_username_and_password(String username, String password) {
-//		driver.findElement(By.name("email")).sendKeys(username);
-//		driver.findElement(By.xpath("//input[@type = 'password']")).sendKeys(password);
-//		
+//	@Then("^user enters username and password$")
+//	public void user_enters_username_and_password(DataTable credentials) {
+//		List<List<String>> data = credentials.cells();
+//		driver.findElement(By.name("email")).sendKeys(data.get(0).get(0));
+//		driver.findElement(By.xpath("//input[@type = 'password']")).sendKeys(data.get(0).get(1));	
 //	}
-//
+//	
 //	@Then("^user clicks on Login button$")
 //	public void user_clicks_on_Login_button() {
 //		driver.findElement(By.xpath("//*[contains(text(), 'Login')]")).click();
@@ -62,29 +61,45 @@
 //		System.out.println(result);  
 //	}
 //	
-//	
-//	@Then("^user moves to new contact page$")
-//	public void user_moves_to_new_contact_page() {
-//	    driver.findElement(By.xpath("//*[contains(text(), 'Contacts')]")).click();
-//	    driver.findElement(By.xpath("//a[@href = '/contacts/new']")).click();
-//	    driver.navigate().refresh();
+//	@Then("^user moves to new deal page$")
+//	public void user_moves_to_new_deal_page() throws InterruptedException {
+//	    driver.findElement(By.xpath("//*[contains(text(), 'Deals')]")).click();
+//	    driver.findElement(By.xpath("//a[@href = '/deals/new']")).click();
+//	    Thread.sleep(3000);
+//	    driver.navigate().to("https://ui.freecrm.com/deals/new");
+//	    Thread.sleep(3000);
 //	    driver.navigate().refresh();
 //	}
 //	
-//	@Then("^user enters contact details \"(.*)\" and \"(.*)\" and \"(.*)\"$")
-//	public void user_enters_contact_details(String firstname, String lastname, String position){
-//		driver.findElement(By.name("first_name")).sendKeys(firstname);
-//		driver.findElement(By.name("last_name")).sendKeys(lastname);
-//		driver.findElement(By.xpath("//input[@name = 'position']")).sendKeys(position);
-//		driver.findElement(By.xpath("//button[contains(text(),'Save')]")).click();
-//		driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
-//		
+//	@Then("^user enters deal details$")
+//	public void user_enters_deal_details(DataTable dealData) throws InterruptedException{
+//		List<List<String>> dealValues = dealData.cells();
+//		driver.findElement(By.name("title")).sendKeys(dealValues.get(0).get(0));
+//		driver.findElement(By.name("amount")).sendKeys(dealValues.get(0).get(1));
+//		driver.findElement(By.name("probability")).sendKeys(dealValues.get(0).get(2));
+//		driver.findElement(By.name("commission")).sendKeys(dealValues.get(0).get(3));
+//		driver.findElement(By.xpath("//*[contains(text(), 'Save')]")).click();
+//		Thread.sleep(2000);
 //		
 //	}
 //	
-//	@Then("^close the browser$")
+//	@Then("^Close the browser$")
 //	public void close_the_browser(){
 //		driver.quit();
 //	}
 //
 //}
+
+
+
+
+
+
+
+
+
+
+
+
+
+

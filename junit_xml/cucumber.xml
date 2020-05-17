@@ -1,25 +1,14 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<testsuite errors="0" failures="0" name="io.cucumber.core.plugin.JUnitFormatter" skipped="0" tests="2" time="0.584">
-<testcase classname="Free CRM Create Contacts" name="Free CRM Create a new contact scenario" time="0.094">
-<system-out><![CDATA[Given User is already on login page.........................................skipped
-When Title of login page is Cogmento CRM....................................skipped
-Then user enters "kush.ag25@gmail.com" and "KushAnshul".....................skipped
-Then user clicks on Login button............................................skipped
-Then user is on home page...................................................skipped
-Then user moves to new contact page.........................................skipped
-Then user enters contact details "Tom" and "Peter" and "Manager"............skipped
-Then close the browser......................................................skipped
-]]></system-out>
-</testcase>
-<testcase classname="Free CRM Create Contacts" name="Free CRM Create a new contact scenario 2" time="0.009">
-<system-out><![CDATA[Given User is already on login page.........................................skipped
-When Title of login page is Cogmento CRM....................................skipped
-Then user enters "kush.ag25@gmail.com" and "KushAnshul".....................skipped
-Then user clicks on Login button............................................skipped
-Then user is on home page...................................................skipped
-Then user moves to new contact page.........................................skipped
-Then user enters contact details "David" and "Moore" and "Director".........skipped
-Then close the browser......................................................skipped
+<testsuite errors="0" failures="0" name="io.cucumber.core.plugin.JUnitFormatter" skipped="0" tests="1" time="26.46">
+<testcase classname="Deal data Creation" name="Free CRM create a new deal scenario" time="25.93">
+<system-out><![CDATA[Given User is already on login page.........................................passed
+When Title of login page is Cogmento CRM....................................passed
+Then user enters username and password......................................passed
+Then user clicks on Login button............................................passed
+Then user is on home page...................................................passed
+Then user moves to new deal page............................................passed
+Then user enters deal details...............................................passed
+Then Close the browser......................................................passed
 ]]></system-out>
 </testcase>
 </testsuite>
